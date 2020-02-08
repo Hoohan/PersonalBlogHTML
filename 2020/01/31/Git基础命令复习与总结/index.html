@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Git基础命令复习与总结 | 种地瓜的小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="写本文的目的长时间不复习就会遗忘，好记性不如烂笔头。在git学习中，需要特别感谢廖雪峰的教程。 本地Git用户名与邮箱修改git config --global user.name &amp;quot;Name&amp;quot;git config --global user.email &amp;quot;email@example.com&amp;quot;针对单个项目去掉--global即可查看git config us">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git基础命令复习与总结">
+<meta property="og:url" content="http://hoohan.cn/2020/01/31/Git基础命令复习与总结/index.html">
+<meta property="og:site_name" content="种地瓜的小菜园">
+<meta property="og:description" content="写本文的目的长时间不复习就会遗忘，好记性不如烂笔头。在git学习中，需要特别感谢廖雪峰的教程。 本地Git用户名与邮箱修改git config --global user.name &amp;quot;Name&amp;quot;git config --global user.email &amp;quot;email@example.com&amp;quot;针对单个项目去掉--global即可查看git config us">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2020-01-31T03:45:24.239Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git基础命令复习与总结">
+<meta name="twitter:description" content="写本文的目的长时间不复习就会遗忘，好记性不如烂笔头。在git学习中，需要特别感谢廖雪峰的教程。 本地Git用户名与邮箱修改git config --global user.name &amp;quot;Name&amp;quot;git config --global user.email &amp;quot;email@example.com&amp;quot;针对单个项目去掉--global即可查看git config us">
+  
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=66513503" charset="UTF-8"></script></html>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">Hoohan&#39;s Blog</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://github.com/Hoohan" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article">
+  <h2 class="title">Git基础命令复习与总结</h2>
+  <p class="sub">1月 31, 2020</p>
+  <article class="content">
+    <h2 id="写本文的目的"><a href="#写本文的目的" class="headerlink" title="写本文的目的"></a>写本文的目的</h2><p>长时间不复习就会遗忘，好记性不如烂笔头。<br>在git学习中，需要特别感谢<a href="https:\\www.liaoxuefeng.com" target="_blank" rel="noopener">廖雪峰的教程</a>。</p>
+<h3 id="本地Git用户名与邮箱"><a href="#本地Git用户名与邮箱" class="headerlink" title="本地Git用户名与邮箱"></a>本地Git用户名与邮箱</h3><p><strong>修改</strong><br><code>git config --global user.name &quot;Name&quot;</code><br><code>git config --global user.email &quot;email@example.com&quot;</code><br>针对单个项目去掉<code>--global</code>即可<br><strong>查看</strong><br><code>git config user.name</code><br><code>git config user.email</code>   </p>
+<h3 id="创建仓库（初始化）"><a href="#创建仓库（初始化）" class="headerlink" title="创建仓库（初始化）"></a>创建仓库（初始化）</h3><p><code>git init</code></p>
+<h3 id="将文件添加到暂存区"><a href="#将文件添加到暂存区" class="headerlink" title="将文件添加到暂存区"></a>将文件添加到暂存区</h3><p><code>git add &lt;file&gt;</code></p>
+<h3 id="提交文件到仓库并留下信息"><a href="#提交文件到仓库并留下信息" class="headerlink" title="提交文件到仓库并留下信息"></a>提交文件到仓库并留下信息</h3><p><code>git commit -m &quot;&lt;message&gt;&quot;</code></p>
+<h3 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h3><p><code>git status</code></p>
+<h3 id="查看特定文件修改状态"><a href="#查看特定文件修改状态" class="headerlink" title="查看特定文件修改状态"></a>查看特定文件修改状态</h3><p><code>git diff &lt;file&gt;</code></p>
+<h3 id="查看记录"><a href="#查看记录" class="headerlink" title="查看记录"></a>查看记录</h3><p>查看仓库提交历史<br><code>git log</code><br>查看用户操作历史<br><code>git reflog</code>  </p>
+<h3 id="重新设定Git仓库指针"><a href="#重新设定Git仓库指针" class="headerlink" title="重新设定Git仓库指针"></a>重新设定Git仓库指针</h3><p><code>git reset -hard &lt;commit id&gt;</code>  </p>
+<h3 id="删除一个文件"><a href="#删除一个文件" class="headerlink" title="删除一个文件"></a>删除一个文件</h3><p><code>git rm &lt;file&gt;</code></p>
+<h3 id="创建RSA密钥"><a href="#创建RSA密钥" class="headerlink" title="创建RSA密钥"></a>创建RSA密钥</h3><p><code>ssh-keygen -t rsa</code><br>在<code>用户\.ssh</code>文件夹中会生成公钥与私钥。<br><code>.pub</code>文件即为公钥，私钥需要妥善保管。</p>
+<h3 id="在本地添加远程git仓库"><a href="#在本地添加远程git仓库" class="headerlink" title="在本地添加远程git仓库"></a>在本地添加远程git仓库</h3><p><code>git remote add origin &lt;repository link&gt;</code><br>其中，远程仓库的链接通常为<code>git@ &lt;website&gt; :&lt;user name&gt;/&lt;repository name&gt;.git</code></p>
+<h3 id="推送本地仓库所有内容"><a href="#推送本地仓库所有内容" class="headerlink" title="推送本地仓库所有内容"></a>推送本地仓库所有内容</h3><p><code>git push -u origin master</code><br>如果目标仓库不是空的，则去掉<code>-u</code>  </p>
+<h3 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h3><p><code>git clone &lt;repository link&gt;</code></p>
+<h3 id="从远程库拉取更新"><a href="#从远程库拉取更新" class="headerlink" title="从远程库拉取更新"></a>从远程库拉取更新</h3><p><code>git pull</code></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>以上就是GitHub仓库的基本操作内容。<br>至于分支管理与标签管理，另开一篇文章总结。</p>
+
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2020/02/07/Illustrator学习记录/" class="link f-fl">⟵Illustrator学习记录（更新中）</a>
+    
+    
+      <a href="/2020/01/30/hello-world/" class="link f-fr">Hello world!⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  <a href="mailto:work@hoohan.cn">work@hoohan.cn</a>
+  
+    
+      
+        · <a href="https://github.com/Hoohan" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  · <a href="http://beian.miit.gov.cn/" target="_blank" class="nav-icn">冀ICP备19000089号</a>
+  · <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13043302000128" target="_blank" class="nav-icn">冀公网安备13043302000128号</a>
+  <span class="copyright">All rights reserved @Hoohan</span>
+</footer>
+  </div>
+</body>
+</html>
