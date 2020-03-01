@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>线性代数4：A的LU分解、矩阵的转置与置换 | 种地瓜的小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#119;&amp;#111;&amp;#x72;&amp;#x6b;&amp;#x40;&amp;#104;&amp;#111;&amp;#111;&amp;#104;&amp;#97;&amp;#x6e;&amp;#x2e;&amp;#99;&amp;#110;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
+<meta name="keywords" content="Linear Algebra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数4：A的LU分解、矩阵的转置与置换">
+<meta property="og:url" content="http://hoohan.cn/2020/03/01/线性代数4：A的LU分解/index.html">
+<meta property="og:site_name" content="种地瓜的小菜园">
+<meta property="og:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#119;&amp;#111;&amp;#x72;&amp;#x6b;&amp;#x40;&amp;#104;&amp;#111;&amp;#111;&amp;#104;&amp;#97;&amp;#x6e;&amp;#x2e;&amp;#99;&amp;#110;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2020-03-01T10:36:16.702Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线性代数4：A的LU分解、矩阵的转置与置换">
+<meta name="twitter:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#119;&amp;#111;&amp;#x72;&amp;#x6b;&amp;#x40;&amp;#104;&amp;#111;&amp;#111;&amp;#104;&amp;#97;&amp;#x6e;&amp;#x2e;&amp;#99;&amp;#110;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
+  
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=66513503" charset="UTF-8"></script></html>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">Hoohan&#39;s Blog</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://github.com/Hoohan" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/tags/Review-Summary" class="nav-menu ">REVIEW / SUMMARY</a>
+          
+        
+            <a href="/tags/Linear-Algebra" class="nav-menu ">LINEAR ALGEBRA</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article">
+  <h2 class="title">线性代数4：A的LU分解、矩阵的转置与置换</h2>
+  <p class="sub">3月 1, 2020</p>
+  <article class="content">
+    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。<br>如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到<a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#119;&#111;&#x72;&#x6b;&#x40;&#104;&#111;&#111;&#104;&#97;&#x6e;&#x2e;&#99;&#110;">&#119;&#111;&#x72;&#x6b;&#x40;&#104;&#111;&#111;&#104;&#97;&#x6e;&#x2e;&#99;&#110;</a>，期待与你交流！<br><strong>课程信息：</strong><br>威廉·吉尔伯特·斯特朗(William Gilbert Strang)教授的线性代数公开课。<br><a href="https://www.bilibili.com/video/av15463995" target="_blank" rel="noopener">麻省理工公开课 线性代数 MIT 18.06 Linear Algebra, Spring 2005 中英双语字幕</a></p>
+<hr>
+<h1 id="Lecture-4-A-LU-Transposes-and-Permutations"><a href="#Lecture-4-A-LU-Transposes-and-Permutations" class="headerlink" title="Lecture 4: A=LU, Transposes and Permutations"></a>Lecture 4: A=LU, Transposes and Permutations</h1><p><strong>第四课 A的LU分解、矩阵的转置与置换</strong>  </p>
+<p><strong>Part 1 A=LU是高斯消元的简洁形态（无行变换）</strong><br><em>The thing about elimination is the right way to understand what the matrix has got.</em><br>矩阵消元的目的就是为了正确认识矩阵的概念。<br><em>A=LU is the most basic factorization of a matrix.</em><br>A=LU是最基本的矩阵分解。<br>既然我们要研究的是A=LU分解，我们就要思考一个问题：A和U到底有什么关系？  </p>
+<script type="math/tex; mode=display">
+EA=U \\ 
+A=LU \\
+\Rightarrow
+L=E^{-1}</script><p>举个例子</p>
+<script type="math/tex; mode=display">
+EA=U \Rightarrow
+\left[
+    \begin{matrix}
+        1 & 0\\
+        -4 & 1
+    \end{matrix}
+\right]
+\left[
+    \begin{matrix}
+        2 & 1\\
+        8 & 7
+    \end{matrix}
+\right]
+=
+\left[
+    \begin{matrix}
+        2 & 1\\
+        0 & 3
+    \end{matrix}
+\right]
+\\
+A=LU \Rightarrow
+\left[
+    \begin{matrix}
+        2 & 1\\
+        8 & 7
+    \end{matrix}
+\right]
+=
+\left[
+    \begin{matrix}
+        1 & 0\\
+        4 & 1
+    \end{matrix}
+\right]
+\left[
+    \begin{matrix}
+        2 & 1\\
+        0 & 3
+    \end{matrix}
+\right]
+= 
+\left[
+    \begin{matrix}
+        1 & 0\\
+        4 & 1
+    \end{matrix}
+\right]
+\left[
+    \begin{matrix}
+        2 & 0\\
+        0 & 3
+    \end{matrix}
+\right]
+\left[
+    \begin{matrix}
+        1 & 1/2\\
+        0 & 1
+    \end{matrix}
+\right]
+=LDU
+\\</script><center>L为下三角矩阵(Lower triangular)，D为对角矩阵(Diagonal)</center>  
+
+<p>这便是A=LU分解。<br>一个问题接踵而来：为什么我们要采用A=LU分解这种看起来“多此一举”的形式呢？<br>因为A=LU的形式更优。<br>这个答案需要在三阶方阵的消元过程中寻找。<br>我们首先假设有如下消元过程（无行变换）：  </p>
+<script type="math/tex; mode=display">
+E_{32}E_{31}E_{21}=U \\
+\Downarrow \\
+A=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}U=LU\\</script><script type="math/tex; mode=display">
+E_{32} = 
+\left[
+    \begin{matrix}
+        1 & 0 & 0\\ 
+        0 & 1 & 0\\
+        0 & -5 & 1
+    \end{matrix}
+\right] \\ 
+E_{31}=I \\ 
+E_{21} = 
+\left[
+    \begin{matrix}
+        1 & 0 & 0\\ 
+        -2 & 1 & 0\\
+        0 & 0 & 1
+    \end{matrix}
+\right]</script><p>经过计算，我们可以得到：</p>
+<script type="math/tex; mode=display">
+E=
+\left[
+    \begin{matrix}
+        1 & 0 & 0\\ 
+        -2 & 1 & 0\\
+        10 & -5 & 1
+    \end{matrix}
+\right]
+ \ \ 
+L=
+\left[
+    \begin{matrix}
+        1 & 0 & 0\\ 
+        2 & 1 & 0\\
+        0 & 5 & 1
+    \end{matrix}
+\right]</script><p>我们观察矩阵E，会发现左下角有一个“10”，再观察矩阵L，我们就能发现L忠实记录了消元的乘数，且不会有其他因为矩阵乘法算法得出的其他数字干扰。<br>也正因为L的这种特性，我们就可以不费力地寻找出L。<br><strong>矩阵消元的计算消耗</strong><br>对于A矩阵(n×n)，计算消耗为$1/3n^3$.<br>对于b矩阵，计算消耗为$n^2$.  </p>
+<hr>
+<p><strong>Part 2 转置和置换</strong><br>在前面我们已经知道所谓置换矩阵就是做过行交换的单位矩阵。<br>由此易得：  </p>
+<ul>
+<li>对于3×3的矩阵，有6种置换矩阵。  </li>
+<li>对于4×4的矩阵，有24种置换矩阵。  </li>
+<li>以此类推，n阶矩阵置换矩阵的个数是n!个。</li>
+<li>且$P^{-1}=P^T \ , \ P^TP=I$  </li>
+</ul>
+<p>有了置换矩阵，高斯消元也就有了完整的矩阵形式：</p>
+<script type="math/tex; mode=display">
+PA=LU</script><p>转置的概念就是将原有矩阵的行变列、列变行。<br>由此引入一种特殊的矩阵：对称矩阵(Symmetic matrix)，对称矩阵的性质就是它本身的转置就是它本身。<br>对称阵有如下性质：</p>
+<script type="math/tex; mode=display">
+A^T=A</script><p>此外，制造一个对称阵非常简单，如何制造对称矩阵呢？<br>答案是使用随意一个长方矩阵(R,Rectangluar)，使用长方矩阵乘上它的转置即可得到对称矩阵，也就是说$RR^T$恒对称。<br>下面给出一个简单的证明：  </p>
+<script type="math/tex; mode=display">
+(RR^T)^T=R^T R^{TT}=R^TR</script><hr>
+<h1 id="About"><a href="#About" class="headerlink" title="About"></a>About</h1><p>本页面数学公式渲染使用了<a href="https://www.mathjax.org/" target="_blank" rel="noopener">Mathjax</a>.<br>关于mathjax添加方法请转到《在hexo中添加mathjax支持》。</p>
+
+  </article>
+  <footer class="f-cf">
+    
+    
+      <a href="/2020/02/27/矩阵乘法与逆矩阵/" class="link f-fr">线性代数3：矩阵乘法与逆矩阵⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  <a href="mailto:work@hoohan.cn">work@hoohan.cn</a>
+  
+    
+      
+        · <a href="https://github.com/Hoohan" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  · <a href="http://beian.miit.gov.cn/" target="_blank" class="nav-icn">冀ICP备19000089号</a>
+  · <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13043302000128" target="_blank" class="nav-icn">冀公网安备13043302000128号</a>
+  <span class="copyright">Copyright © 2018 Hoohan</span>
+</footer>
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

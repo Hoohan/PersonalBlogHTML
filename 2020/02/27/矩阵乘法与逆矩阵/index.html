@@ -5,18 +5,18 @@
   
   <title>线性代数3：矩阵乘法与逆矩阵 | 种地瓜的小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#x77;&amp;#x6f;&amp;#114;&amp;#x6b;&amp;#64;&amp;#104;&amp;#111;&amp;#111;&amp;#x68;&amp;#97;&amp;#x6e;&amp;#x2e;&amp;#99;&amp;#x6e;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William Gi">
+  <meta name="description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#x77;&amp;#x6f;&amp;#x72;&amp;#107;&amp;#64;&amp;#x68;&amp;#x6f;&amp;#x6f;&amp;#x68;&amp;#x61;&amp;#110;&amp;#x2e;&amp;#99;&amp;#x6e;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
 <meta name="keywords" content="Linear Algebra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数3：矩阵乘法与逆矩阵">
 <meta property="og:url" content="http://hoohan.cn/2020/02/27/矩阵乘法与逆矩阵/index.html">
 <meta property="og:site_name" content="种地瓜的小菜园">
-<meta property="og:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#x77;&amp;#x6f;&amp;#114;&amp;#x6b;&amp;#64;&amp;#104;&amp;#111;&amp;#111;&amp;#x68;&amp;#97;&amp;#x6e;&amp;#x2e;&amp;#99;&amp;#x6e;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William Gi">
+<meta property="og:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#x77;&amp;#x6f;&amp;#x72;&amp;#107;&amp;#64;&amp;#x68;&amp;#x6f;&amp;#x6f;&amp;#x68;&amp;#x61;&amp;#110;&amp;#x2e;&amp;#99;&amp;#x6e;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2020-02-27T08:23:18.187Z">
+<meta property="og:updated_time" content="2020-02-27T08:25:34.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性代数3：矩阵乘法与逆矩阵">
-<meta name="twitter:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#x77;&amp;#x6f;&amp;#114;&amp;#x6b;&amp;#64;&amp;#104;&amp;#111;&amp;#111;&amp;#x68;&amp;#97;&amp;#x6e;&amp;#x2e;&amp;#99;&amp;#x6e;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William Gi">
+<meta name="twitter:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#x77;&amp;#x6f;&amp;#x72;&amp;#107;&amp;#64;&amp;#x68;&amp;#x6f;&amp;#x6f;&amp;#x68;&amp;#x61;&amp;#110;&amp;#x2e;&amp;#99;&amp;#x6e;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
   
   <link rel="stylesheet" href="/css/index.css">
 </head>
@@ -65,7 +65,7 @@
   <h2 class="title">线性代数3：矩阵乘法与逆矩阵</h2>
   <p class="sub">2月 27, 2020</p>
   <article class="content">
-    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。<br>如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到<a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x77;&#x6f;&#114;&#x6b;&#64;&#104;&#111;&#111;&#x68;&#97;&#x6e;&#x2e;&#99;&#x6e;">&#x77;&#x6f;&#114;&#x6b;&#64;&#104;&#111;&#111;&#x68;&#97;&#x6e;&#x2e;&#99;&#x6e;</a>，期待与你交流！<br><strong>课程信息：</strong><br>威廉·吉尔伯特·斯特朗(William Gilbert Strang)教授的线性代数公开课。<br><a href="https://www.bilibili.com/video/av15463995" target="_blank" rel="noopener">麻省理工公开课 线性代数 MIT 18.06 Linear Algebra, Spring 2005 中英双语字幕</a></p>
+    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。<br>如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#x77;&#x6f;&#x72;&#107;&#64;&#x68;&#x6f;&#x6f;&#x68;&#x61;&#110;&#x2e;&#99;&#x6e;">&#x77;&#x6f;&#x72;&#107;&#64;&#x68;&#x6f;&#x6f;&#x68;&#x61;&#110;&#x2e;&#99;&#x6e;</a>，期待与你交流！<br><strong>课程信息：</strong><br>威廉·吉尔伯特·斯特朗(William Gilbert Strang)教授的线性代数公开课。<br><a href="https://www.bilibili.com/video/av15463995" target="_blank" rel="noopener">麻省理工公开课 线性代数 MIT 18.06 Linear Algebra, Spring 2005 中英双语字幕</a></p>
 <h1 id="Lecture-3-Matrix-Multiplication-Inverses-and-Gauss-Jordan-Elimination"><a href="#Lecture-3-Matrix-Multiplication-Inverses-and-Gauss-Jordan-Elimination" class="headerlink" title="Lecture 3: Matrix Multiplication, Inverses and Gauss-Jordan Elimination"></a>Lecture 3: Matrix Multiplication, Inverses and Gauss-Jordan Elimination</h1><p><strong>第三课 矩阵乘法、矩阵的逆与高斯-若尔当消元法求逆矩阵</strong>  </p>
 <hr>
 <p><strong>Part1 矩阵乘法</strong><br>上一讲只是为矩阵的乘法和逆矩阵开了一个头，接下来我们详细讲述矩阵乘法。计算矩阵乘法有多种方式。<br><strong>① 常规方法(regular way)</strong><br>首先，有矩阵乘法</p>
@@ -286,6 +286,8 @@ AA^{-1}=I \\ \Rightarrow
 
   </article>
   <footer class="f-cf">
+    
+      <a href="/2020/03/01/线性代数4：A的LU分解/" class="link f-fl">⟵线性代数4：A的LU分解、矩阵的转置与置换</a>
     
     
       <a href="/2020/02/15/在hexo中添加mathjax支持/" class="link f-fr">在hexo中添加mathjax支持⟶</a>
