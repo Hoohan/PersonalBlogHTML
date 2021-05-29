@@ -3,8 +3,8 @@
   src: url("/fonts/BebasNeue.otf"); }
 
 @font-face {
-  font-family: 'MaturaScriptCapitals';
-  src: url("/fonts/MaturaMTScriptCapitals.ttf"); }
+  font-family: 'Ubuntu';
+  src: url("https://fonts.font.im/css?family=Ubuntu:700"); }
 
 @font-face {
   font-family: 'iconfont';

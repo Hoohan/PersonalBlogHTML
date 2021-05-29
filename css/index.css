@@ -25,8 +25,8 @@ body {
   src: url("/fonts/BebasNeue.otf"); }
 
 @font-face {
-  font-family: 'MaturaScriptCapitals';
-  src: url("/fonts/MaturaMTScriptCapitals.ttf"); }
+  font-family: 'Ubuntu';
+  src: url("https://fonts.font.im/css?family=Ubuntu:700"); }
 
 @font-face {
   font-family: 'iconfont';
@@ -77,7 +77,7 @@ body {
       font-size: 45px;
       line-height: 53px;
       color: #333;
-      font-family: MaturaScriptCapitals; }
+      font-family: Ubuntu; }
       #nav > .header > .title:hover {
         opacity: .7; }
   #nav > .ctnWrap {

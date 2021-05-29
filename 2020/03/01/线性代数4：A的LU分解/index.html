@@ -5,18 +5,18 @@
   
   <title>线性代数4：A的LU分解、矩阵的转置与置换 | 种地瓜的小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#119;&amp;#111;&amp;#x72;&amp;#x6b;&amp;#x40;&amp;#104;&amp;#111;&amp;#111;&amp;#104;&amp;#97;&amp;#x6e;&amp;#x2e;&amp;#99;&amp;#110;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
+  <meta name="description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#x77;&amp;#x6f;&amp;#114;&amp;#x6b;&amp;#64;&amp;#x68;&amp;#x6f;&amp;#x6f;&amp;#x68;&amp;#x61;&amp;#110;&amp;#46;&amp;#x63;&amp;#110;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
 <meta name="keywords" content="Linear Algebra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数4：A的LU分解、矩阵的转置与置换">
 <meta property="og:url" content="http://hoohan.cn/2020/03/01/线性代数4：A的LU分解/index.html">
 <meta property="og:site_name" content="种地瓜的小菜园">
-<meta property="og:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#119;&amp;#111;&amp;#x72;&amp;#x6b;&amp;#x40;&amp;#104;&amp;#111;&amp;#111;&amp;#104;&amp;#97;&amp;#x6e;&amp;#x2e;&amp;#99;&amp;#110;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
+<meta property="og:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#x77;&amp;#x6f;&amp;#114;&amp;#x6b;&amp;#64;&amp;#x68;&amp;#x6f;&amp;#x6f;&amp;#x68;&amp;#x61;&amp;#110;&amp;#46;&amp;#x63;&amp;#110;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2020-03-01T10:36:16.702Z">
+<meta property="og:updated_time" content="2020-03-01T10:50:46.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性代数4：A的LU分解、矩阵的转置与置换">
-<meta name="twitter:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#119;&amp;#111;&amp;#x72;&amp;#x6b;&amp;#x40;&amp;#104;&amp;#111;&amp;#111;&amp;#104;&amp;#97;&amp;#x6e;&amp;#x2e;&amp;#99;&amp;#110;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
+<meta name="twitter:description" content="Introduction本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到&amp;#x77;&amp;#x6f;&amp;#114;&amp;#x6b;&amp;#64;&amp;#x68;&amp;#x6f;&amp;#x6f;&amp;#x68;&amp;#x61;&amp;#110;&amp;#46;&amp;#x63;&amp;#110;，期待与你交流！课程信息：威廉·吉尔伯特·斯特朗(William G">
   
   <link rel="stylesheet" href="/css/index.css">
 </head>
@@ -65,7 +65,7 @@
   <h2 class="title">线性代数4：A的LU分解、矩阵的转置与置换</h2>
   <p class="sub">3月 1, 2020</p>
   <article class="content">
-    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。<br>如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到<a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#119;&#111;&#x72;&#x6b;&#x40;&#104;&#111;&#111;&#104;&#97;&#x6e;&#x2e;&#99;&#110;">&#119;&#111;&#x72;&#x6b;&#x40;&#104;&#111;&#111;&#104;&#97;&#x6e;&#x2e;&#99;&#110;</a>，期待与你交流！<br><strong>课程信息：</strong><br>威廉·吉尔伯特·斯特朗(William Gilbert Strang)教授的线性代数公开课。<br><a href="https://www.bilibili.com/video/av15463995" target="_blank" rel="noopener">麻省理工公开课 线性代数 MIT 18.06 Linear Algebra, Spring 2005 中英双语字幕</a></p>
+    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>本页面内容均是从听课的笔记整理而来。不保证数学上的绝对准确，也就是均为个人理解。<br>如果正在阅读此文章的你有更好的想法或者更好的理解，欢迎你发邮件到<a href="&#x6d;&#97;&#x69;&#108;&#116;&#111;&#58;&#x77;&#x6f;&#114;&#x6b;&#64;&#x68;&#x6f;&#x6f;&#x68;&#x61;&#110;&#46;&#x63;&#110;">&#x77;&#x6f;&#114;&#x6b;&#64;&#x68;&#x6f;&#x6f;&#x68;&#x61;&#110;&#46;&#x63;&#110;</a>，期待与你交流！<br><strong>课程信息：</strong><br>威廉·吉尔伯特·斯特朗(William Gilbert Strang)教授的线性代数公开课。<br><a href="https://www.bilibili.com/video/av15463995" target="_blank" rel="noopener">麻省理工公开课 线性代数 MIT 18.06 Linear Algebra, Spring 2005 中英双语字幕</a></p>
 <hr>
 <h1 id="Lecture-4-A-LU-Transposes-and-Permutations"><a href="#Lecture-4-A-LU-Transposes-and-Permutations" class="headerlink" title="Lecture 4: A=LU, Transposes and Permutations"></a>Lecture 4: A=LU, Transposes and Permutations</h1><p><strong>第四课 A的LU分解、矩阵的转置与置换</strong>  </p>
 <p><strong>Part 1 A=LU是高斯消元的简洁形态（无行变换）</strong><br><em>The thing about elimination is the right way to understand what the matrix has got.</em><br>矩阵消元的目的就是为了正确认识矩阵的概念。<br><em>A=LU is the most basic factorization of a matrix.</em><br>A=LU是最基本的矩阵分解。<br>既然我们要研究的是A=LU分解，我们就要思考一个问题：A和U到底有什么关系？  </p>
@@ -192,7 +192,7 @@ PA=LU</script><p>转置的概念就是将原有矩阵的行变列、列变行。
 <script type="math/tex; mode=display">
 A^T=A</script><p>此外，制造一个对称阵非常简单，如何制造对称矩阵呢？<br>答案是使用随意一个长方矩阵(R,Rectangluar)，使用长方矩阵乘上它的转置即可得到对称矩阵，也就是说$RR^T$恒对称。<br>下面给出一个简单的证明：  </p>
 <script type="math/tex; mode=display">
-(RR^T)^T=R^T R^{TT}=R^TR</script><hr>
+(R^TR)^T=R^T R^{TT}=R^TR</script><hr>
 <h1 id="About"><a href="#About" class="headerlink" title="About"></a>About</h1><p>本页面数学公式渲染使用了<a href="https://www.mathjax.org/" target="_blank" rel="noopener">Mathjax</a>.<br>关于mathjax添加方法请转到《在hexo中添加mathjax支持》。</p>
 
   </article>
@@ -214,24 +214,8 @@ A^T=A</script><p>此外，制造一个对称阵非常简单，如何制造对称
   
   · <a href="http://beian.miit.gov.cn/" target="_blank" class="nav-icn">冀ICP备19000089号</a>
   · <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13043302000128" target="_blank" class="nav-icn">冀公网安备13043302000128号</a>
-  <span class="copyright">Copyright © 2018 Hoohan</span>
+  <span class="copyright">Copyright © 2021 Hoohan</span>
 </footer>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
